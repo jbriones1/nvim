@@ -9,6 +9,9 @@ require('nvim-tree').setup({
 				{ key = 'u', action ='dir_up' }
 			},
 		},
+	},
+	update_focused_file = {
+		enable = true
 	}
 })
 map('n', '<C-b>', ':NvimTreeToggle<CR>')

@@ -12,8 +12,11 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 o.relativenumber = true
+o.number = true
 o.tabstop = 4
 o.shiftwidth = 4
+o.expandtab = true
+o.smartindent = true
 o.autoindent = true
 o.history = 50                         -- Remember 50 items in commandline history
 o.updatetime = 200                     -- Decrease update time
