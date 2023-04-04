@@ -14,7 +14,8 @@ return require('packer').startup(function(use)
     }
 
     -- {{ Theme }}
-    use { 'navarasu/onedark.nvim' }
+    -- use { 'navarasu/onedark.nvim' }
+    use 'Mofiqul/vscode.nvim'
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 

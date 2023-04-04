@@ -4,7 +4,7 @@ local o = vim.opt
 local a = vim.api
 
 function map(mode, alias, curr)
-	vim.keymap.set(mode, alias, curr, { silent = true })
+    vim.keymap.set(mode, alias, curr, { silent = true })
 end
 
 -- {{ Config }}
@@ -21,6 +21,12 @@ o.autoindent = true
 o.history = 50                         -- Remember 50 items in commandline history
 o.updatetime = 200                     -- Decrease update time
 o.signcolumn = 'yes'                   -- Always show sign column
+o.scrolloff = 8
+o.wrap = false
+
+-- Better searching
+o.incsearch = true
+o.hlsearch = false
 
 -- Trailing spaces
 o.list = true
@@ -47,7 +53,8 @@ map('n', ';' , ':')
 map('n', ',', '@q')
 map('n', '<Enter>', 'o<Esc>')
 map('n', '<C-m>', '<C-p>')                       -- Move to previous auto-complete
-map('n', '<S-Enter', 'O<Esc>')
+map('n', '<S-Enter>', 'O<Esc>')
+map('n', '<leader>v', '<C-v>')
 
 -- Moving windows
 map('n', '<C-h>', '<C-W><C-H>')
