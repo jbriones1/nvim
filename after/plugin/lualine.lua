@@ -1,8 +1,5 @@
 require('lualine').setup({
     options = {
-        theme = 'onedark'
+        theme = 'vscode'
     }
---  sections = {
---      lualine_c = { { 'filename', path = 1 } }
---  }
 })
