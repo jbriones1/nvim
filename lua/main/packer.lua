@@ -61,4 +61,5 @@ return require('packer').startup(function(use)
     }
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'MunifTanjim/prettier.nvim'
+    use { 'akinsho/git-conflict.nvim', tag = '1.0.0' }
 end)

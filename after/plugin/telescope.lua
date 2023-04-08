@@ -1,6 +1,6 @@
 require('telescope').setup {
     defaults = {
-        path_display={'tail'}
+        path_display={'shorten'}
     }
 }
 local builtin = require('telescope.builtin')
