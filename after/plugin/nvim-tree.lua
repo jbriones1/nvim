@@ -4,14 +4,12 @@ vim.opt.termguicolors = true
 require('nvim-tree').setup({
     view = {
         side = 'left',
+        width = 50,
         mappings = {
             list = {
                 { key = 'u', action ='dir_up' }
             },
         },
-    },
-    filters = {
-        dotfiles = true
     },
     update_focused_file = {
         enable = true
