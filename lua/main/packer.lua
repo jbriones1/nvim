@@ -61,5 +61,10 @@ return require('packer').startup(function(use)
     }
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'MunifTanjim/prettier.nvim'
-    use { 'akinsho/git-conflict.nvim', tag = '1.0.0' }
+    use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
+    use {
+        'lewis6991/gitsigns.nvim',
+        -- tag = 'release' -- To use the latest release (do not use this if you run Neovim
+        -- nightly or dev builds!)
+    }
 end)
