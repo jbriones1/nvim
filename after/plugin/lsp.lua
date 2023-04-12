@@ -20,3 +20,4 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')

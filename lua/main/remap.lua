@@ -59,7 +59,6 @@ map('n', ',', '@q')
 map('n', '<Enter>', 'o<Esc>')
 map('n', '<C-m>', '<C-p>')                       -- Move to previous auto-complete
 map('n', '<S-Enter>', 'O<Esc>')
-map('n', '<leader>v', '<C-v>')
 
 -- Moving windows
 map('n', '<C-h>', '<C-W><C-H>')
