@@ -61,10 +61,14 @@ return require('packer').startup(function(use)
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},     -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'}     -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+            {'hrsh7th/cmp-buffer'},   -- Suggestions based on current file
+            {'hrsh7th/cmp-path'},     -- Suggestions based on file system
+            {'saadparwaiz1/cmp_luasnip'}
         }
     }
     use 'jose-elias-alvarez/null-ls.nvim'
+
 
     -- {{ Git }}
     use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
