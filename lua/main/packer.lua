@@ -22,23 +22,28 @@ return require('packer').startup(function(use)
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
 
-    use 'tpope/vim-fugitive'
 
+    -- {{ Handling brackets/tags }}
     use 'machakann/vim-sandwich'
+    use {
+        "windwp/nvim-autopairs"
+    }
+
+    -- {{ Editor configs }}
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-tree/nvim-tree.lua'
+
+    -- {{ CSS colours }}
     use 'ap/vim-css-color'
+
+    -- {{ Error highlighting }}
     use {
         "folke/trouble.nvim",
-        requires = "nvim-tree/nvim-web-devicons",
-        config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
+        requires = "nvim-tree/nvim-web-devicons"
     }
+    use 'folke/lsp-colors.nvim'
+
+    -- {{ LSP }}
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -60,20 +65,20 @@ return require('packer').startup(function(use)
         }
     }
     use 'jose-elias-alvarez/null-ls.nvim'
+
+    -- {{ Git }}
     use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
     use {
         'lewis6991/gitsigns.nvim',
         tag = 'release' -- To use the latest release (do not use this if you run Neovim
         -- nightly or dev builds!)
     }
+    use 'tpope/vim-fugitive'
+
+    -- {{ Commenting }}
+    use 'numToStr/Comment.nvim'
     use {
         'kkoomen/vim-doge',
         run = ':call doge#install()'
     }
-    use {
-        "windwp/nvim-autopairs"
-    }
-
-    -- {{ Commenting }}
-    use 'numToStr/Comment.nvim'
 end)
