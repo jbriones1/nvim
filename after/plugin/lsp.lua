@@ -21,3 +21,4 @@ end)
 
 lsp.setup()
 map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')

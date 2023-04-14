@@ -5,31 +5,57 @@ local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
 null_ls.setup({
-  sources = {
-      null_ls.builtins.formatting.prettierd
-  },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
+    sources = {
+        null_ls.builtins.formatting.prettier.with({
+            bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+            filetypes = {
+                "css",
+                "html",
+                "json",
+                "less",
+                "markdown",
+                "scss",
+                "typescript",
+                "typescriptreact",
+                "javascript",
+                "yaml",
+            },
+            cli_options = {
+                tabWidth = 4,
+                arrowParens = 'avoid',
+                bracketSpacing = true,
+                endOfLine = 'lf',
+                printWidth = 100,
+                semi = true,
+                singleQuote = true,
+                trailingComma = 'none',
+                useTabs = false,
+                config_precedence = 'prefer-file'
+            },
+        })
+    },
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.keymap.set("n", "<leader>f", function()
+                vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf(), timeout_ms = 3000 })
+            end, { buffer = bufnr, desc = "[lsp] format" })
 
-      -- format on save
-      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-      vim.api.nvim_create_autocmd(event, {
-        buffer = bufnr,
-        group = group,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr, async = async })
-        end,
-        desc = "[lsp] format on save",
-      })
-    end
+            -- format on save
+            --  vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+            --  vim.api.nvim_create_autocmd(event, {
+                --    buffer = bufnr,
+                --    group = group,
+                --    callback = function()
+                    --      vim.lsp.buf.format({ bufnr = bufnr, async = async })
+                    --    end,
+                    --    desc = "[lsp] format on save",
+                    --  })
+        end
 
-    if client.supports_method("textDocument/rangeFormatting") then
-      vim.keymap.set("x", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-    end
-  end,
+        if client.supports_method("textDocument/rangeFormatting") then
+            vim.keymap.set("x", "<Leader>f", function()
+                vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+            end, { buffer = bufnr, desc = "[lsp] format" })
+        end
+    end,
 })

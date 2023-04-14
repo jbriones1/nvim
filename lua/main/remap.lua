@@ -11,6 +11,7 @@ end
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+o.guifont = 'Hack NFM'
 -- Line numbers
 o.relativenumber = true
 o.number = true

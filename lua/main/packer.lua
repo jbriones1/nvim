@@ -64,7 +64,14 @@ return require('packer').startup(function(use)
     use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
     use {
         'lewis6991/gitsigns.nvim',
-        -- tag = 'release' -- To use the latest release (do not use this if you run Neovim
+        tag = 'release' -- To use the latest release (do not use this if you run Neovim
         -- nightly or dev builds!)
+    }
+    use {
+        'kkoomen/vim-doge',
+        run = ':call doge#install()'
+    }
+    use {
+        "windwp/nvim-autopairs"
     }
 end)
