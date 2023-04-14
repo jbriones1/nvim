@@ -1,6 +1,6 @@
 require('lualine').setup({
     options = {
-        theme = 'vscode'
+        theme = 'codedark'
     },
     sections = {
         lualine_c = {

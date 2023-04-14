@@ -23,6 +23,9 @@
 -- map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 -- map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope='line'})<CR>')
 local lsp = require('lsp-zero').preset({})
+local lspconfig = require('lspconfig')
+
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })

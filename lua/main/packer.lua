@@ -10,14 +10,16 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- {{ Theme }}
     -- use { 'navarasu/onedark.nvim' }
-    use 'Mofiqul/vscode.nvim'
+    -- use 'Mofiqul/vscode.nvim'
+    use 'lunarvim/darkplus.nvim'
+    use 'tomasiser/vim-code-dark'
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
@@ -49,22 +51,23 @@ return require('packer').startup(function(use)
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {                                      -- Optional
-            'williamboman/mason.nvim',
-            run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
+            { 'neovim/nvim-lspconfig' }, -- Required
+            {
+                                       -- Optional
+                'williamboman/mason.nvim',
+                run = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
             },
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-            {'hrsh7th/cmp-buffer'},   -- Suggestions based on current file
-            {'hrsh7th/cmp-path'},     -- Suggestions based on file system
-            {'saadparwaiz1/cmp_luasnip'}
+            { 'hrsh7th/nvim-cmp' },   -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },   -- Required
+            { 'hrsh7th/cmp-buffer' }, -- Suggestions based on current file
+            { 'hrsh7th/cmp-path' },   -- Suggestions based on file system
+            { 'saadparwaiz1/cmp_luasnip' }
         }
     }
     use 'jose-elias-alvarez/null-ls.nvim'
