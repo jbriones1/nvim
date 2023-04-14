@@ -6,8 +6,7 @@ local async = event == "BufWritePost"
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.formatting.prettier.with({
-            bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+        null_ls.builtins.formatting.prettierd.with({
             filetypes = {
                 "css",
                 "html",
@@ -17,7 +16,6 @@ null_ls.setup({
                 "scss",
                 "typescript",
                 "typescriptreact",
-                "javascript",
                 "yaml",
             },
             cli_options = {
