@@ -24,6 +24,14 @@
 -- map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope='line'})<CR>')
 local lsp = require('lsp-zero').preset({})
 local lspconfig = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+    capabilities = capabilities,
+    filetypes = { 'html' },
+    init_options = {}
+})
 
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 

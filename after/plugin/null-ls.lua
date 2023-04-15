@@ -9,7 +9,7 @@ null_ls.setup({
         null_ls.builtins.formatting.prettierd.with({
             filetypes = {
                 "css",
-                "html",
+                -- "html",
                 "json",
                 "less",
                 "markdown",
