@@ -31,9 +31,10 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs"
     }
 
-    -- {{ Editor configs }}
+    -- {{ Editor UI }}
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-tree/nvim-tree.lua'
+    use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 
     -- {{ CSS colours }}
     use 'ap/vim-css-color'
@@ -53,7 +54,7 @@ return require('packer').startup(function(use)
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
             {
-                                       -- Optional
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
@@ -62,11 +63,11 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },   -- Required
+            { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },   -- Required
-            { 'hrsh7th/cmp-buffer' }, -- Suggestions based on current file
-            { 'hrsh7th/cmp-path' },   -- Suggestions based on file system
+            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/cmp-buffer' },   -- Suggestions based on current file
+            { 'hrsh7th/cmp-path' },     -- Suggestions based on file system
             { 'saadparwaiz1/cmp_luasnip' }
         }
     }
