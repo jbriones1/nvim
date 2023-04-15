@@ -7,12 +7,24 @@ require('nvim-tree').setup({
         width = 50,
         mappings = {
             list = {
-                { key = 'u', action ='dir_up' }
+                { key = 'u', action = 'dir_up' }
             },
         },
     },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
+    },
     update_focused_file = {
         enable = true
+    },
+    diagnostics = {
+        enable = true
+    },
+    filters = {
+        dotfiles = true,
+        exclude = { '.build' }
     }
 })
 map('n', '<C-b>', ':NvimTreeToggle<CR>')
