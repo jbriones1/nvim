@@ -16,20 +16,8 @@ null_ls.setup({
                 "scss",
                 "typescript",
                 "typescriptreact",
-                "yaml",
-            },
-            cli_options = {
-                tabWidth = 4,
-                arrowParens = 'avoid',
-                bracketSpacing = true,
-                endOfLine = 'lf',
-                printWidth = 100,
-                semi = true,
-                singleQuote = true,
-                trailingComma = 'none',
-                useTabs = false,
-                config_precedence = 'prefer-file'
-            },
+                "yaml"
+            }
         })
     },
     on_attach = function(client, bufnr)
@@ -39,15 +27,15 @@ null_ls.setup({
             end, { buffer = bufnr, desc = "[lsp] format" })
 
             -- format on save
-            --  vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-            --  vim.api.nvim_create_autocmd(event, {
-                --    buffer = bufnr,
-                --    group = group,
-                --    callback = function()
-                    --      vim.lsp.buf.format({ bufnr = bufnr, async = async })
-                    --    end,
-                    --    desc = "[lsp] format on save",
-                    --  })
+            vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+            vim.api.nvim_create_autocmd(event, {
+                buffer = bufnr,
+                group = group,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr, async = async })
+                end,
+                desc = "[lsp] format on save",
+            })
         end
 
         if client.supports_method("textDocument/rangeFormatting") then
