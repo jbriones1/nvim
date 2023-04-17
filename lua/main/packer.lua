@@ -14,10 +14,7 @@ return require('packer').startup(function(use)
     }
 
     -- {{ Theme }}
-    -- use { 'navarasu/onedark.nvim' }
-    -- use 'Mofiqul/vscode.nvim'
-    use 'lunarvim/darkplus.nvim'
-    use 'tomasiser/vim-code-dark'
+    use { "ellisonleao/gruvbox.nvim" }
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 

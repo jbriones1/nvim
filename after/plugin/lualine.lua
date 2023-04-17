@@ -1,6 +1,6 @@
 require('lualine').setup({
     options = {
-        theme = 'codedark'
+        theme = 'gruvbox'
     },
     sections = {
         lualine_c = {
