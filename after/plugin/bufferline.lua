@@ -3,6 +3,7 @@ local bufferline = require('bufferline')
 bufferline.setup {
     options = {
         mode = 'buffers',
+        themable = true,
         numbers = "none",                    -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
         right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -31,7 +32,7 @@ bufferline.setup {
         -- end,
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-        tab_size = 21,
+        tab_size = 40,
         diagnostics = false,    -- | "nvim_lsp" | "coc",
         diagnostics_update_in_insert = false,
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -56,11 +57,12 @@ bufferline.setup {
         offsets = {
             {
                 filetype = "NvimTree",
-                text = function()
-                    local home = vim.fn.expand('$HOME')
-                    local cwd = vim.fn.getcwd()
-                    return string.gsub(cwd, home, '~')
-                end,
+                -- text = function()
+                --     local home = vim.fn.expand('$HOME')
+                --     local cwd = vim.fn.getcwd()
+                --     return string.gsub(cwd, home, '~')
+                -- end,
+                text = "File Explorer",
                 text_align = 'left'
             },
         },
@@ -71,7 +73,7 @@ bufferline.setup {
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = 'thick', -- 'slant' | 'slope' | "thick" | "thin" | { 'any', 'any' },
+        separator_style = 'thin', -- 'slant' | 'slope' | "thick" | "thin" | { 'any', 'any' },
         -- enforce_regular_tabs = true,
         always_show_bufferline = true,
         -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
@@ -80,89 +82,11 @@ bufferline.setup {
         -- end
     },
     highlights = {
-        fill = {
-            fg = { attribute = "fg", highlight = "#ff0000" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        background = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
         buffer_selected = {
-            fg = { attribute = 'fg', highlight = '#ff0000' },
-            bg = { attribute = 'bg', highlight = '#0000ff' },
             italic = false
-        },
-        buffer_visible = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        close_button = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        close_button_visible = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        -- close_button_selected = {
-        --   fg = {attribute='fg',highlight='TabLineSel'},
-        --   bg ={attribute='bg',highlight='TabLineSel'}
-        --   },
-
-        tab_selected = {
-            fg = { attribute = "fg", highlight = "Normal" },
-            bg = { attribute = "bg", highlight = "Normal" },
-            italic = false
-        },
-        tab = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        tab_close = {
-            -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
-            fg = { attribute = "fg", highlight = "TabLineSel" },
-            bg = { attribute = "bg", highlight = "Normal" },
-        },
-        duplicate_selected = {
-            fg = { attribute = "fg", highlight = "TabLineSel" },
-            bg = { attribute = "bg", highlight = "TabLineSel" },
-        },
-        duplicate_visible = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        duplicate = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        modified = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        modified_selected = {
-            fg = { attribute = "fg", highlight = "Normal" },
-            bg = { attribute = "bg", highlight = "Normal" },
-        },
-        modified_visible = {
-            fg = { attribute = "fg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        separator = {
-            fg = { attribute = "bg", highlight = "TabLine" },
-            bg = { attribute = "bg", highlight = "TabLine" },
-        },
-        separator_selected = {
-            fg = { attribute = "bg", highlight = "Normal" },
-            bg = { attribute = "bg", highlight = "Normal" },
-        },
-        -- separator_visible = {
-        --   fg = {attribute='bg',highlight='TabLine'},
-        --   bg = {attribute='bg',highlight='TabLine'}
-        --   },
-        indicator_selected = {
-            fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-            bg = { attribute = "bg", highlight = "Normal" },
-        },
-    },
+        }
+    }
 }
+
+map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
+map('n', '<S-l>', ':BufferLineCycleNext<CR>')
