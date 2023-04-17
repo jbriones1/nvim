@@ -1,27 +1,3 @@
--- local lsp = require('lsp-zero')
---
--- lsp.preset('recommended')
---
--- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
---
--- local cmp = require('cmp')
--- -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
--- local cmp_mappings = lsp.defaults.cmp_mappings({
---     ['<CR>'] = cmp.mapping.confirm({ select = false }),
---     ['<C-Space>'] = cmp.mapping.complete()
--- })
---
--- lsp.setup_nvim_cmp({
---     mapping = cmp_mappings
--- })
---
--- lsp.on_attach(function(client, bufnr)
---   lsp.default_keymaps({buffer = bufnr})
--- end)
---
--- lsp.setup()
--- map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
--- map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope='line'})<CR>')
 local lsp = require('lsp-zero').preset({})
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -45,10 +21,26 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-    -- vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
-    -- vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
-    -- vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+
+    -- Autohighlighting
+    if client.server_capabilities.documentHighlightProvider then
+        print('Highlighting enabled')
+        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = vim.lsp.buf.document_highlight,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Document Highlight",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = vim.lsp.buf.clear_references,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Clear All the References",
+        })
+    end
 end)
 
 lsp.setup()
@@ -74,4 +66,5 @@ cmp.setup({
     }
 })
 
+map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')

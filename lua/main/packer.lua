@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     -- {{ Theme }}
     use { "ellisonleao/gruvbox.nvim" }
 
+    -- {{ Treesitter }}
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use 'theprimeagen/harpoon'
