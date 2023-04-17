@@ -53,7 +53,17 @@ bufferline.setup {
         --     return true
         --   end
         -- end,
-        offsets = { { filetype = "NvimTree", text = "" } },
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = function()
+                    local home = vim.fn.expand('$HOME')
+                    local cwd = vim.fn.getcwd()
+                    return string.gsub(cwd, home, '~')
+                end,
+                text_align = 'left'
+            },
+        },
         show_buffer_icons = true,
         show_buffer_close_icons = true,
         show_close_icon = true,

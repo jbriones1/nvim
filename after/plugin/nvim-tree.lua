@@ -3,8 +3,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 require('nvim-tree').setup({
     view = {
-        side = 'left',
-        width = 50,
+        side = 'right',
+        width = 70,
         mappings = {
             list = {
                 { key = 'u', action = 'dir_up' }
@@ -14,7 +14,7 @@ require('nvim-tree').setup({
     git = {
         enable = true,
         ignore = false,
-        timeout = 500,
+        timeout = 1000,
     },
     update_focused_file = {
         enable = true
