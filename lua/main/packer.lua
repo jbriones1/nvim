@@ -14,7 +14,8 @@ return require('packer').startup(function(use)
     }
 
     -- {{ Theme }}
-    use { "ellisonleao/gruvbox.nvim" }
+    -- use { "ellisonleao/gruvbox.nvim" }
+    use 'folke/tokyonight.nvim'
 
     -- {{ Treesitter }}
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })

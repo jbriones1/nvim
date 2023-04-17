@@ -25,7 +25,6 @@ lsp.on_attach(function(client, bufnr)
 
     -- Autohighlighting
     if client.server_capabilities.documentHighlightProvider then
-        print('Highlighting enabled')
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
         vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
         vim.api.nvim_create_autocmd("CursorHold", {
@@ -66,5 +65,5 @@ cmp.setup({
     }
 })
 
-map('n', 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', 'vca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
