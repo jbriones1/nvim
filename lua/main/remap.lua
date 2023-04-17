@@ -59,6 +59,7 @@ map('n', ';' , ':')
 map('n', ',', '@q')
 map('n', '<Enter>', 'o<Esc>')
 map('n', '<S-Enter>', 'O<Esc>')
+map('n', '<leader>q', ':b#<bar>bd#<CR>')
 
 -- Moving windows
 map('n', '<C-h>', '<C-W><C-H>')

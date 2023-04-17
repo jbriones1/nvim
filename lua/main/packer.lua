@@ -89,4 +89,5 @@ return require('packer').startup(function(use)
         'kkoomen/vim-doge',
         run = ':call doge#install()'
     }
+    use "folke/which-key.nvim"
 end)
