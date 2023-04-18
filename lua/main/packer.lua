@@ -89,4 +89,5 @@ return require('packer').startup(function(use)
         run = ':call doge#install()'
     }
     use "folke/which-key.nvim"
+    use 'theHamsta/nvim-semantic-tokens'
 end)

@@ -40,6 +40,19 @@ lsp.on_attach(function(client, bufnr)
             desc = "Clear All the References",
         })
     end
+
+    -- Semantic highlighting for C
+    if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
+        local group = vim.api.nvim_create_augroup('SemanticTokens', {})
+        vim.api.nvim_create_autocmd('TextChanged', {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.semantic_tokens_full()
+            end
+        })
+        vim.lsp.buf.semantic_tokens_full()
+    end
 end)
 
 lsp.setup()
