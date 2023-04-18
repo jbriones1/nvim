@@ -5,11 +5,6 @@ require('nvim-tree').setup({
     view = {
         side = 'right',
         width = 70,
-        mappings = {
-            list = {
-                { key = 'u', action = 'dir_up' }
-            },
-        },
     },
     git = {
         enable = true,

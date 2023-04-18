@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
         }
     }
     use 'jose-elias-alvarez/null-ls.nvim'
-
+    use 'jay-babu/mason-null-ls.nvim'
 
     -- {{ Git }}
     use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }

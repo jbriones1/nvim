@@ -1,8 +1,13 @@
 local null_ls = require("null-ls")
+local mason_null_ls = require('mason-null-ls')
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
+
+mason_null_ls.setup({
+    automatic_setup = true
+})
 
 null_ls.setup({
     sources = {
@@ -18,7 +23,8 @@ null_ls.setup({
                 "typescriptreact",
                 "yaml"
             }
-        })
+        }),
+        null_ls.builtins.diagnostics.eslint_d
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
