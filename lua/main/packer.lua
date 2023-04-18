@@ -88,6 +88,10 @@ return require('packer').startup(function(use)
         'kkoomen/vim-doge',
         run = ':call doge#install()'
     }
-    use "folke/which-key.nvim"
+
+    use 'folke/which-key.nvim'
     use 'theHamsta/nvim-semantic-tokens'
+
+    -- {{ Session management }}
+    use 'rmagatti/auto-session'
 end)
