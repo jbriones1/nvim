@@ -1,9 +1,8 @@
 -- {{ Functions }}
 local g = vim.g
 local o = vim.opt
-local a = vim.api
 
-function map(mode, alias, curr)
+function Map(mode, alias, curr)
     vim.keymap.set(mode, alias, curr, { silent = true })
 end
 
@@ -55,37 +54,37 @@ vim.cmd [[
 ]]
 
 -- {{ Keybinds }}
-map('n', ';' , ':')
-map('n', ',', '@q')
-map('n', '<Enter>', 'o<Esc>')
-map('n', '<S-Enter>', 'O<Esc>')
-map('n', '<leader>q', ':b#<bar>bd#<CR>')
+Map('n', ';' , ':')
+Map('n', ',', '@q')
+Map('n', '<Enter>', 'o<Esc>')
+Map('n', '<S-Enter>', 'O<Esc>')
+Map('n', '<leader>q', ':b#<bar>bd#<CR>')
 
 -- Moving windows
-map('n', '<C-h>', '<C-W><C-H>')
-map('n', '<C-j>', '<C-W><C-J>')
-map('n', '<C-k>', '<C-W><C-K>')
-map('n', '<C-l>', '<C-W><C-L>')
+Map('n', '<C-h>', '<C-W><C-H>')
+Map('n', '<C-j>', '<C-W><C-J>')
+Map('n', '<C-k>', '<C-W><C-K>')
+Map('n', '<C-l>', '<C-W><C-L>')
 
 -- Moving text while highlighted
-map('v', 'J', ":m '>+1<CR>gv=gv")
-map('v', 'K', ":m '<-2<CR>gv=gv")
+Map('v', 'J', ":m '>+1<CR>gv=gv")
+Map('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- Append next line to end without moving cursor
-map('n', 'J', 'mzJ`z')
+Map('n', 'J', 'mzJ`z')
 
 -- Move up and down, centering text
-map('n', '<C-d>', '<C-d>zz')
-map('n', '<C-u>', '<C-u>zz')
+Map('n', '<C-d>', '<C-d>zz')
+Map('n', '<C-u>', '<C-u>zz')
 
 -- Replace without losing word in register
-map('x', '<leader>p', '\"_dP"')
+Map('x', '<leader>p', '\"_dP"')
 
 -- Copy into system clipboard
-map('n', '<leader>y', '\"+y')
-map('v', '<leader>y', '\"+y')
-map('n', '<leader>Y', '\"+Y')
+Map('n', '<leader>y', '\"+y')
+Map('v', '<leader>y', '\"+y')
+Map('n', '<leader>Y', '\"+Y')
 
 -- Replace the word I'm on for the entire file
-map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+Map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 

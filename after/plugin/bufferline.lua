@@ -88,5 +88,5 @@ bufferline.setup {
     }
 }
 
-map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
-map('n', '<S-l>', ':BufferLineCycleNext<CR>')
+Map('n', '<S-h>', ':BufferLineCyclePrev<CR>')
+Map('n', '<S-l>', ':BufferLineCycleNext<CR>')

@@ -27,4 +27,4 @@ require('nvim-tree').setup({
         exclude = { '.build' }
     }
 })
-map('n', '<C-b>', ':NvimTreeToggle<CR>')
+Map('n', '<C-b>', ':NvimTreeToggle<CR>')

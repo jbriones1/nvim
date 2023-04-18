@@ -3,6 +3,8 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local lsp_highlighting = vim.api.nvim_create_augroup("lsp_document_highlight", {})
+
 lspconfig.emmet_ls.setup({
     capabilities = capabilities,
     filetypes = { 'html' },
@@ -25,18 +27,16 @@ lsp.on_attach(function(client, bufnr)
 
     -- Autohighlighting
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-        vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
-        vim.api.nvim_create_autocmd("CursorHold", {
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             callback = vim.lsp.buf.document_highlight,
             buffer = bufnr,
-            group = "lsp_document_highlight",
+            group = lsp_highlighting,
             desc = "Document Highlight",
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             callback = vim.lsp.buf.clear_references,
             buffer = bufnr,
-            group = "lsp_document_highlight",
+            group = lsp_highlighting,
             desc = "Clear All the References",
         })
     end
@@ -65,5 +65,5 @@ cmp.setup({
     }
 })
 
-map('n', 'vca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
+Map('n', 'vca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+Map('n', '<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
