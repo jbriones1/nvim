@@ -1,4 +1,6 @@
-require('git-conflict').setup({
+local git_conflict = require('git-conflict')
+
+git_conflict.setup({
     default_mappings = true,     -- disable buffer local mapping created by this plugin
     default_commands = true,     -- disable commands created by this plugin
     disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
@@ -10,7 +12,7 @@ require('git-conflict').setup({
 }
 )
 vim.keymap.set('n', 'co', '<Plug>(git-conflict-ours)')
-vim.keymap.set('n', '<leader>ct', '<Plug>(git-conflict-theirs)')
+vim.keymap.set('n', '<leader>gct', '<Plug>(git-conflict-theirs)')
 vim.keymap.set('n', 'cb', '<Plug>(git-conflict-both)')
 vim.keymap.set('n', 'c0', '<Plug>(git-conflict-none)')
 vim.keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)')

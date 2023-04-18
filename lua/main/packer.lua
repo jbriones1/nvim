@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
     use 'jay-babu/mason-null-ls.nvim'
 
     -- {{ Git }}
-    use { 'akinsho/git-conflict.nvim', tag = 'v1.0.0' }
+    use { 'akinsho/git-conflict.nvim', tag = 'v1.*' }
     use {
         'lewis6991/gitsigns.nvim',
         tag = 'release' -- To use the latest release (do not use this if you run Neovim

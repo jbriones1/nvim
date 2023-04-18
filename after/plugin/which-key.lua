@@ -120,7 +120,7 @@ local leadermappings = {
     ['hd'] = { 'gs.diffthis)', 'Diff this' },
     ['hD'] = { 'function() gs.diffthis("~") end)', 'Diff this ~' },
     ['td'] = { 'gs.toggle_deleted)', 'Toggle deleted' },
-    ['ct'] = { '<leader>ct', '<Plug>(git-conflict-theirs)' },
+    ['ct'] = { '<leader>gct', '<Plug>(git-conflict-theirs)' },
     -- HARPOON
     ['a'] = { 'mark.add_file', 'Add file to harpoon' },
 }
