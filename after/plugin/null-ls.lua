@@ -15,7 +15,7 @@ null_ls.setup({
             filetypes = {
                 'css',
                 'html',
-                'json',
+                -- 'json',
                 'less',
                 'markdown',
                 'scss',
@@ -23,6 +23,9 @@ null_ls.setup({
                 'typescriptreact',
                 'javascript',
                 'yaml'
+            },
+            env = {
+                PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('~/.config/nvim/.prettierrc')
             }
         }),
         null_ls.builtins.diagnostics.eslint_d
@@ -33,8 +36,8 @@ null_ls.setup({
                 vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf(), timeout_ms = 3000 })
             end, { buffer = bufnr, desc = '[lsp] format' })
 
-            -- format on save, except for html
-            if vim.bo.filetype ~= 'html' or vim.bo.filetype ~= 'javascript' then
+            -- format on save, except for html and javascript
+            if vim.bo.filetype ~= 'html' and vim.bo.filetype ~= 'javascript' then
                 vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
                 vim.api.nvim_create_autocmd(event, {
                     buffer = bufnr,
