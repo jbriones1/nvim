@@ -46,6 +46,9 @@ o.splitbelow = true
 o.ignorecase = true
 o.smartcase = true
 
+-- Blinking cursor
+o.guicursor = 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkon200'
+
 -- Highlight region on yank
 vim.cmd [[
   augroup YankHighlight
