@@ -10,5 +10,6 @@ auto_session.setup({
         end,
     },
     auto_session_supress_dirs = { '~/', '~/Downloads', '/'},
-
+    auto_save_enabled = true,
+    auto_session_use_git_branch = true
 })
