@@ -2,8 +2,9 @@
 local g = vim.g
 local o = vim.opt
 
-function Map(mode, alias, curr)
-    vim.keymap.set(mode, alias, curr, { silent = true })
+function Map(mode, alias, curr, options)
+    local opts = options or {}
+    vim.keymap.set(mode, alias, curr, opts)
 end
 
 -- {{ Config }}
@@ -22,9 +23,9 @@ o.expandtab = true
 o.smartindent = true
 
 o.autoindent = true
-o.history = 50                         -- Remember 50 items in commandline history
-o.updatetime = 200                     -- Decrease update time
-o.signcolumn = 'yes'                   -- Always show sign column
+o.history = 50       -- Remember 50 items in commandline history
+o.updatetime = 200   -- Decrease update time
+o.signcolumn = 'yes' -- Always show sign column
 o.scrolloff = 8
 o.wrap = false
 o.colorcolumn = '120'
@@ -54,37 +55,36 @@ vim.cmd [[
 ]]
 
 -- {{ Keybinds }}
-Map('n', ';' , ':')
-Map('n', ',', '@q')
-Map('n', '<Enter>', 'o<Esc>')
-Map('n', '<S-Enter>', 'O<Esc>')
-Map('n', '<leader>q', ':b#<bar>bd#<CR>')
+Map('n', ';', ':', { silent = true })
+Map('n', ',', '@q', { silent = true })
+Map('n', '<Enter>', 'o<Esc>', { silent = true })
+Map('n', '<S-Enter>', 'O<Esc>', { silent = true })
+Map('n', '<leader>q', ':b#<bar>bd#<CR>', { silent = true })
 
 -- Moving windows
-Map('n', '<C-h>', '<C-W><C-H>')
-Map('n', '<C-j>', '<C-W><C-J>')
-Map('n', '<C-k>', '<C-W><C-K>')
-Map('n', '<C-l>', '<C-W><C-L>')
+Map('n', '<C-h>', '<C-W><C-H>', { silent = true })
+Map('n', '<C-j>', '<C-W><C-J>', { silent = true })
+Map('n', '<C-k>', '<C-W><C-K>', { silent = true })
+Map('n', '<C-l>', '<C-W><C-L>', { silent = true })
 
 -- Moving text while highlighted
-Map('v', 'J', ":m '>+1<CR>gv=gv")
-Map('v', 'K', ":m '<-2<CR>gv=gv")
+Map('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+Map('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Append next line to end without moving cursor
-Map('n', 'J', 'mzJ`z')
+Map('n', 'J', 'mzJ`z', { silent = true })
 
 -- Move up and down, centering text
-Map('n', '<C-d>', '<C-d>zz')
-Map('n', '<C-u>', '<C-u>zz')
+Map('n', '<C-d>', '<C-d>zz', { silent = true })
+Map('n', '<C-u>', '<C-u>zz', { silent = true })
 
 -- Replace without losing word in register
-Map('x', '<leader>p', '\"_dP"')
+Map('x', '<leader>p', '\"_dP"', { silent = true })
 
 -- Copy into system clipboard
-Map('n', '<leader>y', '\"+y')
-Map('v', '<leader>y', '\"+y')
-Map('n', '<leader>Y', '\"+Y')
+Map('n', '<leader>y', '\"+y', { silent = true })
+Map('v', '<leader>y', '\"+y', { silent = true })
+Map('n', '<leader>Y', '\"+Y', { silent = true })
 
 -- Replace the word I'm on for the entire file
-Map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
+Map('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { silent = true })

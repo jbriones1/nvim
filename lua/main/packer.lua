@@ -32,14 +32,14 @@ return require('packer').startup(function(use)
     -- use { "ellisonleao/gruvbox.nvim" }
     use 'folke/tokyonight.nvim'
 
-    -- {{ Treesitter }}
+    -- {{ Syntax highlighting }}
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use 'theHamsta/nvim-semantic-tokens'
 
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
 
-
-    -- {{ Handling brackets/tags }}
+    -- {{ Brackets/tags }}
     use 'machakann/vim-sandwich'
     use {
         "windwp/nvim-autopairs"
@@ -49,9 +49,7 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-tree/nvim-tree.lua'
     use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
-
-    -- {{ CSS colours }}
-    use 'ap/vim-css-color'
+    use 'petertriho/nvim-scrollbar'
 
     -- {{ Error highlighting }}
     use {
@@ -105,10 +103,10 @@ return require('packer').startup(function(use)
     }
 
     use 'folke/which-key.nvim'
-    use 'theHamsta/nvim-semantic-tokens'
 
     -- {{ Session management }}
     use 'rmagatti/auto-session'
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

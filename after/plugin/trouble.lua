@@ -48,4 +48,6 @@ trouble.setup({
     use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 })
 
-Map('n', '<C-\\>', '<cmd>TroubleToggle document_diagnostics<CR>')
+Map('n', '<C-\\>', '<cmd>TroubleToggle<CR>')
+Map('n', '<leader>td', '<cmd>TroubleToggle document_diagnostics<CR>')
+Map('n', '<leader>tg', '<cmd>TroubleToggle quickfix<CR>')

@@ -120,8 +120,5 @@ gitsigns.setup {
         map('n', '<leader>ghu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
         map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
         map('n', '<leader>ghp', gs.preview_hunk, { desc = 'Preview hunk' })
-        map('n', '<leader>gb', function() gs.blame_line { full = true } end, { desc = ' Show blame info' })
-        map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle blame line' })
-        map('n', '<leader>gd', diffWith, { desc = 'Diff with' })
-    end
-}
+        map('n', '<leader>gB', function() gs.blame_line { full = true } end, { desc = ' Show blame info' })
+        map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle blame line' }) map('n', '<leader>gd', diffWith, { desc = 'Diff with' }) end }
