@@ -107,20 +107,7 @@ local leadermappings = {
     ['p'] = { '\"_dP"', 'Replace without losing word in register' },
     ['s'] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace the word I'm on for the entire file" },
     -- GIT
-    -- git-conflict
-    ['gs'] = { ':Git<CR>', 'Open vim-fugitive' },
-    -- gitsigns
-    ['hs'] = { ':Gitsigns stage_hunk<CR>', 'Stage hunk' },
-    ['hr'] = { ':Gitsigns reset_hunk<CR>', 'Reset hunk' },
-    ['hu'] = { 'gs.undo_stage_hunk)', 'Undo stage hunk' },
-    ['hR'] = { 'gs.reset_buffer)', 'Reset buffer' },
-    ['hp'] = { 'gs.preview_hunk)', 'Preview hunk' },
-    ['hb'] = { 'function() gs.blame_line{full=true} end', 'Blame line' },
-    ['tb'] = { 'gs.toggle_current_line_blame)', 'Toggle line blame' },
-    ['hd'] = { 'gs.diffthis)', 'Diff this' },
-    ['hD'] = { 'function() gs.diffthis("~") end)', 'Diff this ~' },
-    ['td'] = { 'gs.toggle_deleted)', 'Toggle deleted' },
-    ['ct'] = { '<leader>gct', '<Plug>(git-conflict-theirs)' },
+    ['<leader>g'] = { name = "+git" },
     -- HARPOON
     ['a'] = { 'mark.add_file', 'Add file to harpoon' },
 }

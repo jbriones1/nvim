@@ -11,9 +11,9 @@ git_conflict.setup({
     }
 }
 )
-vim.keymap.set('n', 'co', '<Plug>(git-conflict-ours)')
-vim.keymap.set('n', '<leader>gct', '<Plug>(git-conflict-theirs)')
-vim.keymap.set('n', 'cb', '<Plug>(git-conflict-both)')
-vim.keymap.set('n', 'c0', '<Plug>(git-conflict-none)')
-vim.keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)')
-vim.keymap.set('n', '[x', '<Plug>(git-conflict-next-conflict)')
+vim.keymap.set('n', '<leader>gct', '<Plug>(git-conflict-theirs)', { desc = 'Resolve conflict theirs' })
+vim.keymap.set('n', '<leader>gco', '<Plug>(git-conflict-ours)', { desc = 'Resolve conflict ours' })
+vim.keymap.set('n', '<leader>gcb', '<Plug>(git-conflict-both)', { desc = 'Resolve conflict both' })
+vim.keymap.set('n', '<leader>gcn', '<Plug>(git-conflict-none)', { desc = 'Resolve conflict none' })
+vim.keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)', { desc = 'Previous conflict' })
+vim.keymap.set('n', '[x', '<Plug>(git-conflict-next-conflict)', { desc = 'Next conflict' })

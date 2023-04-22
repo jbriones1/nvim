@@ -1,4 +1,6 @@
-require('telescope').setup {
+local telescope = require('telescope')
+
+telescope.setup {
     defaults = {
         sorting_strategy = 'ascending',
         layout_config = {
@@ -10,8 +12,15 @@ require('telescope').setup {
             local tail = require('telescope.utils').path_tail(path)
             return string.format('%s (%s)', tail, path)
         end
+    },
+    extension = {
+        ['ui-select'] = {
+            require('telescope.themes').get_dropdown {}
+        }
     }
 }
+
+telescope.load_extension('ui-select')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
