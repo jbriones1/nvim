@@ -14,6 +14,7 @@ lspconfig.emmet_ls.setup({
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.on_attach(function(client, bufnr)
+    local caps = client.server_capabilities
     lsp.default_keymaps({ buffer = bufnr })
     local opts = { buffer = bufnr, remap = false }
 
@@ -26,7 +27,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
 
     -- Autohighlighting
-    if client.server_capabilities.documentHighlightProvider then
+    if caps.documentHighlightProvider then
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             callback = vim.lsp.buf.document_highlight,
             buffer = bufnr,
@@ -42,7 +43,7 @@ lsp.on_attach(function(client, bufnr)
     end
 
     -- Semantic highlighting for C
-    if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
+    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
         local group = vim.api.nvim_create_augroup('SemanticTokens', {})
         vim.api.nvim_create_autocmd('TextChanged', {
             group = group,
