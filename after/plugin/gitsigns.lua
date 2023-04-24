@@ -75,7 +75,7 @@ gitsigns.setup {
         ignore_whitespace = false,
     },
     -- current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-    current_line_blame_formatter = '<author>, <%Y-%m-%d> - <summary>',
+    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
     sign_priority                = 6,
     update_debounce              = 100,
     status_formatter             = nil,   -- Use default
@@ -121,4 +121,6 @@ gitsigns.setup {
         map('n', '<leader>gR', gs.reset_buffer, { desc = 'Reset buffer' })
         map('n', '<leader>ghp', gs.preview_hunk, { desc = 'Preview hunk' })
         map('n', '<leader>gB', function() gs.blame_line { full = true } end, { desc = ' Show blame info' })
-        map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle blame line' }) map('n', '<leader>gd', diffWith, { desc = 'Diff with' }) end }
+        map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'Toggle blame line' })
+        map('n', '<leader>gd', diffWith, { desc = 'Diff with' })
+    end }
