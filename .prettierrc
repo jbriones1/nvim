@@ -11,7 +11,17 @@
     "overrides": [
         {
             "files": "*.ts",
-            "tabWidth": 2
+            "options": {
+                "arrowParens": "avoid",
+                "bracketSpacing": true,
+                "endOfLine": "lf",
+                "semi": true,
+                "printWidth": 100,
+                "singleQuote": true,
+                "tabWidth": 2,
+                "trailingComma": "none",
+                "useTabs": false,
+            }
         }
     ]
 }

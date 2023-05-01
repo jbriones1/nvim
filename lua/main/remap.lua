@@ -63,6 +63,7 @@ Map('n', ',', '@q', { silent = true })
 Map('n', '<Enter>', 'o<Esc>', { silent = true })
 Map('n', '<S-Enter>', 'O<Esc>', { silent = true })
 Map('n', '<leader>q', ':b#<bar>bd#<CR>', { silent = true })
+Map('i', '<C-BS>', '<C-W>', { silent = true })
 
 -- Moving windows
 Map('n', '<C-h>', '<C-W><C-H>', { silent = true })

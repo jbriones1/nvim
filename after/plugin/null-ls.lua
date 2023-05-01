@@ -9,14 +9,21 @@ mason_null_ls.setup({
     automatic_setup = true
 })
 
+local function no_auto_save(filetype)
+    return filetype ~= 'html' and filetype ~= 'javascript' and filetype ~= 'json'
+end
+
 null_ls.setup({
     debug = true,
     sources = {
         null_ls.builtins.formatting.prettierd.with({
+            env = {
+                PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('$HOME/.config/nvim/.prettierrc')
+            },
             filetypes = {
                 'css',
                 'html',
-                -- 'json',
+                'json',
                 'less',
                 'markdown',
                 'scss',
@@ -24,9 +31,6 @@ null_ls.setup({
                 'typescriptreact',
                 'javascript',
                 'yaml'
-            },
-            env = {
-                PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('~/.config/nvim/.prettierrc')
             }
         }),
         null_ls.builtins.diagnostics.eslint_d
@@ -35,7 +39,7 @@ null_ls.setup({
         if client.supports_method('textDocument/formatting') then
             vim.keymap.set('n', '<leader>f', function()
                 vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf(), timeout_ms = 3000 })
-            end, { buffer = bufnr, desc = '[lsp] format' })
+            end, { buffer = bufnr, desc = 'LSP format' })
 
             -- format on save, except for html and javascript
         --     if vim.bo.filetype ~= 'html' and vim.bo.filetype ~= 'javascript' then
@@ -54,7 +58,7 @@ null_ls.setup({
         if client.supports_method('textDocument/rangeFormatting') then
             vim.keymap.set('x', '<Leader>f', function()
                 vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-            end, { buffer = bufnr, desc = '[lsp] format' })
+            end, { buffer = bufnr, desc = 'LSP format' })
         end
-    end,
+    end
 })
