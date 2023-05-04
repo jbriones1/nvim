@@ -58,7 +58,7 @@ vim.cmd [[
 ]]
 
 -- {{ Keybinds }}
-Map('n', ';', ':', { silent = true })
+Map({ 'n', 'v' }, ';', ':', { silent = true })
 Map('n', ',', '@q', { silent = true })
 Map('n', '<Enter>', 'o<Esc>', { silent = true })
 Map('n', '<S-Enter>', 'O<Esc>', { silent = true })
